@@ -135,3 +135,11 @@ def test_ulid_from_timestamp():
 def test_ulid_invalid_input(constructor, value):
     with pytest.raises(ValueError):
         constructor(value)
+
+
+def test_ulid_hashing():
+    ulid1 = ULID()
+    ulid2 = ULID()
+
+    assert hash(ulid1) == hash(ulid1)
+    assert hash(ulid1) != hash(ulid2)
